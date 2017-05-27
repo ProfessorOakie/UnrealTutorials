@@ -1,7 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "MyPawn.h"
-#include "Engine.h"
 
 
 // Sets default values
@@ -16,12 +15,12 @@ AMyPawn::AMyPawn()
 	// Create a dummy root component we can attach things to.
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root Component"));
 	// Create a camera and a visible object
-	UCameraComponent* OurCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("OurCamera"));
+	OurCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("OurCamera"));
 	OurVisibleComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("OurVisibleComponent"));
 	// Attach our camera and visible object to our root component. Offset and rotate the camera.
 	OurCamera->SetupAttachment(RootComponent);
 	OurCamera->SetRelativeLocation(FVector(-250.0f, 0.0f, 250.0f));
-	OurCamera->SetRelativeRotation(FRotator(-45.0f, 0.0f, 0.0f));
+	OurCamera->SetRelativeRotation(FRotator(CameraStartingAngle, 0.0f, 0.0f));
 	OurVisibleComponent->SetupAttachment(RootComponent);
 
 }
@@ -30,7 +29,7 @@ AMyPawn::AMyPawn()
 void AMyPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	OurCamera->SetRelativeRotation(FRotator(CameraStartingAngle, 0.0f, 0.0f));
 }
 
 // Called every frame

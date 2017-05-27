@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine.h"
 #include "GameFramework/Pawn.h"
 #include "MyPawn.generated.h"
 
@@ -40,4 +41,8 @@ public:
 	UPROPERTY(EditAnywhere)
 	float MovementSpeed;
 
+	UPROPERTY(EditAnywhere)
+	float CameraStartingAngle = -30.0f;
+
+	UCameraComponent* OurCamera;
 };
