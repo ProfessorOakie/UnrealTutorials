@@ -72,8 +72,8 @@ void AMyPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	InputComponent->BindAction("Grow", IE_Released, this, &AMyPawn::StopGrowing);
 
 	// Respond when we press our movement axis
-	InputComponent->BindAxis("MoveX", this, &AMyPawn::Move_XAxis);
-	InputComponent->BindAxis("MoveY", this, &AMyPawn::Move_YAxis);
+	InputComponent->BindAxis("MoveForward", this, &AMyPawn::Move_XAxis);
+	InputComponent->BindAxis("MoveRight", this, &AMyPawn::Move_YAxis);
 
 }
 
